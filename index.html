@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALP Engineering Calculator | Motor & Kablo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div><b>ALP Engineering Calculator</b><small>Motor • Akım • Kablo • Gerilim Düşümü</small></div><span>GitHub Pages Ready</span></header>
+<main>
+<section class="hero"><small>ENGINEERING TOOL 01</small><h1>3 Fazlı Motor & Kablo Hesaplama</h1><p>Motor gücünden hat akımını, seçilen kablonun yaklaşık gerilim düşümünü ve aktif hat kaybını hesaplayın.</p></section>
+<section class="grid">
+<div class="card"><h2>1. Motor / Sistem Bilgileri</h2>
+<label>Motor mekanik gücü<input id="power" type="number" value="45" step="0.1"><i>kW</i></label>
+<label>Hat gerilimi<input id="voltage" type="number" value="400"><i>V</i></label>
+<label>Güç faktörü (cos φ)<input id="pf" type="number" value="0.85" min="0.01" max="1" step="0.01"><i>cosφ</i></label>
+<label>Motor verimi<input id="efficiency" type="number" value="92" min="1" max="100" step="0.1"><i>%</i></label>
+<label>Kablo uzunluğu<input id="length" type="number" value="80" min="0" step="0.1"><i>m</i></label>
+<label>İletken malzemesi<select id="material"><option value="copper">Bakır</option><option value="aluminum">Alüminyum</option></select></label>
+</div>
+<div class="card"><h2>2. Kablo Bilgileri</h2>
+<label>İletken kesiti<select id="section"><option>1.5</option><option>2.5</option><option>4</option><option>6</option><option>10</option><option>16</option><option>25</option><option selected>50</option><option>35</option><option>70</option><option>95</option><option>120</option><option>150</option><option>185</option><option>240</option><option>300</option></select><i>mm²</i></label>
+<label>Kablo reaktansı<input id="reactance" type="number" value="0.080" min="0" step="0.001"><i>Ω/km</i></label>
+<label>AC direnç (opsiyonel)<input id="resistance" type="number" placeholder="Otomatik" min="0" step="0.001"><i>Ω/km</i></label>
+<label>Sıcaklık katsayısı<input id="tempFactor" type="number" value="1.00" min="0.01" step="0.01"><i>k</i></label>
+<small class="hint">AC direnç boş bırakılırsa iletken malzemesi ve kesit üzerinden yaklaşık değer hesaplanır.</small>
+<button id="calculate">HESAPLA</button><button id="reset" class="secondary">Varsayılanlara dön</button>
+</div></section>
+<section class="results"><div class="resulthead"><div><small>CALCULATION RESULT</small><h2>Sonuçlar</h2></div><strong id="badge">Hesaplama bekleniyor</strong></div>
+<div class="resultsgrid"><article><span>Hat akımı</span><b id="current">—</b><small>RMS, 3 faz</small></article><article><span>Giriş elektrik gücü</span><b id="inputPower">—</b><small>Motor verimine göre</small></article><article><span>Gerilim düşümü</span><b id="drop">—</b><small>V ve %</small></article><article><span>Hat kaybı</span><b id="loss">—</b><small>Yaklaşık aktif kayıp</small></article></div>
+<div class="details"><div><h3>Hesap özeti</h3><div id="summary">Değerleri girip HESAPLA düğmesine basın.</div></div><div><h3>Gerilim düşümü değerlendirmesi</h3><div class="track"><div id="bar"></div></div><p id="assessment">Değerlendirme için hesaplama yapın.</p></div></div></section>
+<section class="card"><h2>Kullanılan temel denklemler</h2><p><b>3 faz motor akımı:</b> I = P<sub>out</sub> / (√3 × V × cosφ × η)</p><p><b>Gerilim düşümü:</b> ΔV = √3 × I × L × (R × cosφ + X × sinφ)</p><p><b>Gerilim düşümü yüzdesi:</b> ΔV% = (ΔV / V) × 100</p><p><b>Üç faz aktif hat kaybı:</b> P<sub>loss</sub> ≈ 3 × I² × R</p></section>
+<div class="warning"><b>⚠ Mühendislik notu:</b> Bu araç ön boyutlandırma ve eğitim amaçlıdır. Nihai kablo seçimi için döşeme şekli, ortam sıcaklığı, gruplanma, kablo tipi, sürekli akım taşıma kapasitesi, kısa devre dayanımı, koruma cihazı koordinasyonu, kalkış akımı, harmonikler, üretici verileri ve ilgili standartlar ayrıca kontrol edilmelidir.</div>
+</main><footer>ALP Engineering Calculator • Static web application</footer>
+<script src="script.js"></script>
+</body></html>
